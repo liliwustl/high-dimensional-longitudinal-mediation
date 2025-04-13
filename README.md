@@ -1,1 +1,1 @@
-# longitudianal-mediation
+Code for "Lili Liu, Haixiang Zhang, Yinan Zheng, Kai Zhang, Tao Gao, Cheng Zheng, Lifang Hou and Lei Liu. (2025) Causal Mediation Analysis for Longitudinal Data and Survival Outcomes. Briefings in Bioinformatics"
