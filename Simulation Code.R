@@ -1,17 +1,8 @@
-library(mvtnorm)
 library(MASS)
 library(lme4)
-library(ncvreg)
 library(survival)
-library(abind)
-library(pracma)
 library(pcoxtime)
-library(dplyr)
-library(lmerTest)
 library(nlme)##lme
-#options(warn=-1)
-T=1
-nrep=10
 n=300  #sample size
 p=5000# the dimension of mediators
 S=1:9
@@ -23,9 +14,6 @@ theta2=rep(0.4,q)
 beta=c(c(0.5,0.4,0.3),rep(0,3),c(0.5,0.4,0.3),rep(0,p-9))
 true=1:3
 S1=which(beta!=0)
-for(irep in 1:nrep){
-  ii=(T-1)*nrep+irep
-  set.seed((T-1)*nrep+irep+1234)
   a1=rnorm(n,0,0.2)
   J1=matrix(rep(1:q,times=q),byrow=FALSE, nrow=q)
   K1=matrix(rep(1:q,times=q),byrow=TRUE, nrow=q)
@@ -151,8 +139,5 @@ for(irep in 1:nrep){
     abhat=beta.hat*alpha.hat
     count[ID_fdr]=1
   }
-  save_res=list(IDhat=IDhat,abhat=abhat,beta.hat=beta.hat,alpha.hat=alpha.hat,count=count,count_SIS=count_SIS,
-                count_naive=count_naive,abhat_naive=abhat_naive)
-  save_name = paste('~/intermediate_results',ii,'.Rdata',sep="")
-  save(save_res,file = save_name)
-}
+list(IDhat=IDhat,abhat=abhat,beta.hat=beta.hat,alpha.hat=alpha.hat,count=count)
+  
